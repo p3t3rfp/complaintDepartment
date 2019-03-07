@@ -1,0 +1,12 @@
+<a href="/user/{{userId}}/complaints">Go Back</a>
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        {{#each comments}}
+        {{!-- <h5 class="card-title">{{username}}</h5> --}}
+        <p class="card-text">
+            <ul>
+                <li>{{content}}</li>
+            </ul>
+        </p>
+        {{/each}}
+    </div>

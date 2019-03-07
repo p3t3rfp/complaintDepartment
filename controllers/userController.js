@@ -3,13 +3,17 @@ const { Complaint } = require('../models/Complaint')
 
 const userController = {
     index: (req,res) => {
-        res.send('hello from usercontroller')
+        res.render('index')
     },
     new: (req,res) => {
-        res.send('new')
+        res.render('users/new')
     },
     create: (req,res) => {
-        res.send('create')
+        console.log(req.body)
+        User.create(req.body)
+        .then(user => {
+        res.redirect(`/user/${user._id}/complaints`)
+        })
     },
     show: (req,res) => {
         res.send('show')

@@ -1,69 +1,58 @@
-// const User = require('../models/User')
-// const Complaint = require('../models/Complaint')
+const User = require('../models/User')
+const Complaint = require('../models/Complaint')
+const Comment = require('../models/Comment')
 
 const complaintController = {
-    index: (req,res) => {
-        res.send('hello from complaintController')
+    index: (req, res) => {
+        User.findById(req.params.userId).then(user => {
+            const userId = req.params.userId
+            Complaint.find().then(complaints => {
+                res.render('complaints/index', { complaints, userId, user })
+            })
+        })
     },
-    new: (req,res) => {
-        res.send('new')
+    new: (req, res) => {
+        User.findById(req.params.userId).then(user => {
+            res.render('complaints/new', { user })
+        })
+
     },
-    create: (req,res) => {
-        res.send('create')
+    create: (req, res) => {
+        User.findById(req.params.userId).then(user => {
+            Complaint.create(req.body)
+                .then(complaint => {
+                    user.complaints.push(complaint)
+                    user.save()
+                    res.redirect(`/user/${req.params.userId}/complaints`)
+                })
+        })
     },
-    show: (req,res) => {
-        res.send('show')
+    show: (req, res) => {
+        let { complaintId } = req.params
+        const userId = req.params.userId
+        Complaint.findById(req.params.complaintId).populate('comments')
+            .then(complaint => {
+                res.render('complaints/show', { complaint, complaintId, userId })
+            })
     },
-    edit: (req,res) => {
-        res.send('edit')
+    edit: (req, res) => {
+        const userId = req.params.userId
+        const complaintId = req.params.complaintId
+        Complaint.findById(complaintId).then(complaint => {
+            res.render('complaints/edit', { complaintId, userId })
+        })
     },
-    update: (req,res) => {
-        res.send('update')
+    update: (req, res) => {
+        Complaint.findByIdAndUpdate(req.params.complaintId, req.body, { new: true })
+            .then(() => {
+                res.redirect(`/user/${req.params.userId}/complaints/${req.params.complaintId}`)
+            })
     },
-    delete: (req,res) => {
-        res.send('delete')
+    delete: (req, res) => {
+        Complaint.findByIdAndDelete(req.params.complaintId).then(() => {
+            res.redirect(`/user/${req.params.userId}/complaints`)
+        })
     }
-    
-    // index: (req, res) => {
-    //     res.send('hello from complaintController')
-    // },
-
-    // new: (req, res) => {
-    //     res.send('Here is a blank form for a new user')
-
-    // },
-    // create: (req, res) => {
-    //     User.findById(req.params.userId)
-    //         .then(user => {
-    //             Complaint.create({
-    //                 content: 'Here is a new complaint',
-    //                 comments: [{ content: 'Yippee' }]
-    //             })
-    //                 .then(newComplaint => {
-    //                     user.Complaints.push(newComplaint)
-    //                     user.save()
-    //                     res.send(newComplaint)
-    //                 })
-    //         })
-    // },
-    // show: (req, res) => {
-    //     Complaint.findById(req.params.ComplaintId).then(Complaint => {
-    //         res.send({ Complaint })
-    //     })
-    // },
-    // edit: (req, res) => {
-    //     res.send(`showing form to update`)
-    // },
-    // update: (req, res) => {
-    //     Complaint.findByIdAndUpdate(req.params.ComplaintId, { content: 'This Complaint was updated a second time' }, { new: true }).then(updatedComplaint => {
-    //         res.send(updatedComplaint)
-    //     })
-    // },
-    // delete: (req, res) => {
-    //     Complaint.findByIdAndDelete(req.params.ComplaintId).then(() => {
-    //         res.send(`Deleted Complaint with Complaint if of ${req.params.ComplaintId}`)
-    //     })
-    // }
 }
 
 

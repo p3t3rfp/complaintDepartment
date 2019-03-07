@@ -1,0 +1,8 @@
+<form action='/user/{{userId}}/complaints/{{complaintId}}?_method=PUT' method="POST">
+
+  <div class="form-group">
+    <label for="content">Complaint</label>
+    <input class="form-control" id="complaint" name="content" value='{{complaint.content}}'></input>
+  </div>
+  <button type="submit" class="btn btn-secondary">Lodge Your Complaint</button>
+</form>
