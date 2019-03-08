@@ -1,16 +1,15 @@
 <div class="container">
-    <a class="btn btn-info" href="/user/{{userId}}/complaints/new">+ complaint</a>
+    <a class="btn btn-info" href="/user/{{userId}}/Complaints/new">+ Complaint</a>
 
     <h2 class="text-center">Complaints</h2>
 
-    {{#each complaints}}
-    <a href='/user/{{../userId}}/complaints/{{id}}'>
+    {{#each user.Complaints}}
+    <a href='/user/{{../user._id}}/Complaints/{{id}}'>
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">{{../user.username}}</h5>
                 <p class="card-text">{{content}}</p>
             </div>
-                <a href="#" class="btn btn-secondary">View Comments</a>
         </div>
     </a>
     {{/each}}

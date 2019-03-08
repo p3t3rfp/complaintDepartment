@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const User = new Schema({
     username: String,
     password: String,
-    complaints: [
+    Complaints: [
         {
             type: Schema.Types.ObjectId,
             ref: "Complaint"

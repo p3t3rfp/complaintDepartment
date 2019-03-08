@@ -1,7 +1,7 @@
 {
-  "name": "complaintdepartment",
+  "name": "Complaintdepartment",
   "version": "1.0.0",
-  "description": "### Trello Board * https://trello.com/b/s9wfVu8r/complaintdepartment",
+  "description": "### Trello Board * https://trello.com/b/s9wfVu8r/Complaintdepartment",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/p3t3rfp/complaintDepartment.git"
+    "url": "git+https://github.com/p3t3rfp/ComplaintDepartment.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/p3t3rfp/complaintDepartment/issues"
+    "url": "https://github.com/p3t3rfp/ComplaintDepartment/issues"
   },
-  "homepage": "https://github.com/p3t3rfp/complaintDepartment#readme",
+  "homepage": "https://github.com/p3t3rfp/ComplaintDepartment#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
     "dotenv": "^6.2.0",

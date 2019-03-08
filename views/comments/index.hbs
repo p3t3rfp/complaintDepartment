@@ -1,12 +1,20 @@
-<a href="/user/{{userId}}/complaints">Go Back</a>
+<a href="/user/{{userId}}/Complaints">Go Back</a>
 <div class="card" style="width: 18rem;">
     <div class="card-body">
+        <h5 class="card-title">{{user.username}}</h5>
         {{#each comments}}
-        {{!-- <h5 class="card-title">{{username}}</h5> --}}
         <p class="card-text">
             <ul>
                 <li>{{content}}</li>
             </ul>
         </p>
         {{/each}}
+        <div>
+            <a href='/user/{{user.id}}/Complaints/{{ComplaintId}}/comments/new'>
+                <button class="btn btn-secondary">+ comment</button>
+            </a>
+            <form action="/user/{{userId}}/Complaints/{{Complaint.id}}?_method=DELETE" method="POST">
+                <button type="submit" class="btn btn-secondary">Destroy</button>
+            </form>
+        </div>
     </div>

@@ -8,7 +8,7 @@ const testComment = new Comment({
     content: "wear a sweater"
 })
 
-const complaint1 = new Complaint({
+const Complaint1 = new Complaint({
     content: "It's so cold",
     comments: [testComment]
 })
@@ -16,14 +16,14 @@ const complaint1 = new Complaint({
 const testUser = new User({
     username: 'testy',
     password: 'funone',
-    complaints: [complaint1]
+    Complaints: [Complaint1]
 })
 
 User.deleteMany({})
     .then(() => Complaint.deleteMany({}))
     .then(() => Comment.deleteMany({}))
     .then(() => User.create(testUser))
-    .then(() => Complaint.create(complaint1))
+    .then(() => Complaint.create(Complaint1))
     .then(() => Comment.create(testComment))
     .catch((err) => console.log(err))
     .then(() => mongoose.connection.close())

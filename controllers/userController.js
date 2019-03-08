@@ -9,10 +9,9 @@ const userController = {
         res.render('users/new')
     },
     create: (req,res) => {
-        console.log(req.body)
         User.create(req.body)
         .then(user => {
-        res.redirect(`/user/${user._id}/complaints`)
+        res.redirect(`/user/${user._id}/Complaints`)
         })
     },
     show: (req,res) => {
