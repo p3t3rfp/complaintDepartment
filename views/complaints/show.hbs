@@ -1,0 +1,18 @@
+<a href="/user/{{userId}}/Complaints">Go Back</a>
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">{{username}}</h5>
+        <p class="card-text">{{Complaint.content}}</p>
+        <a href="/user/{{userId}}/Complaints/{{ComplaintId}}/comments" class="btn btn-secondary">View Comments</a>
+    </div>
+</div>
+<div>
+    {{#each comments}}
+    <p>{{content}}</p>
+    {{/each}}
+</div>
+
+<a href="/user/{{userId}}/Complaints/{{Complaint.id}}/edit" class="btn btn-secondary">Alter</a>
+<form action="/user/{{userId}}/Complaints/{{Complaint.id}}?_method=DELETE" method="POST">
+    <button type="submit" class="btn btn-secondary">Destroy</button>
+</form>

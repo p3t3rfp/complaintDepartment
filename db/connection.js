@@ -1,11 +1,13 @@
+require('dotenv').config()
+
 const mongoose = require('mongoose')
-// mongoose.connect('mongoldb://localhost/complaintDepartment').then(() => {})
+// mongoose.connect('mongoldb://localhost/ComplaintDepartment').then(() => {})
 
 if (process.env.MONGODB_URI) {
     mongoose.connect(process.env.MONGODB_URI);
   }
   else {
-    mongoose.connect('mongodb://localhost/chirp-project');
+    mongoose.connect('mongodb://localhost/ComplaintDepartment');
   }
   mongoose.connection.on('error', function(err) {
     console.error('MongoDB connection error: ' + err);
